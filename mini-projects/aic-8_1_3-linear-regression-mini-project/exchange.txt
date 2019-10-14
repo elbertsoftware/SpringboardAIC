@@ -1,0 +1,2 @@
+standard_error = np.array([np.sqrt(np.diagonal(sse * np.linalg.inv(np.dot(X.T, X))))])
+ t_stats = coefs / standard_error
