@@ -1,3 +1,4 @@
 **/*.bz2 filter=lfs diff=lfs merge=lfs -text
 mini-projects/aic-5_4_3-JSON-mini-project/data/world_bank_projects.json filter=lfs diff=lfs merge=lfs -text
 **/*.gz filter=lfs diff=lfs merge=lfs -text
+**/*.sav filter=lfs diff=lfs merge=lfs -text
