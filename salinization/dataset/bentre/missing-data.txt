@@ -1,0 +1,37 @@
+1. 004. Loc Thuan (2002-2015).xls
+  2014: No data
+  2015: Only partial Feb
+
+2. So Lieu Man Ben Tre 2017
+  BDai: same as 2016
+  LThuan: missing sheet
+  GHoa: same as 2016
+  AThuan: same as 2016
+  SDoc: same as 2016
+  MHoa: new for 2017
+  BTrai: same as 2016
+  MgMy: same as 2016
+
+3. So lieu man bo sung_2017
+  Cai Hop: There are many zero measurements between: 2017-03-03 and 2017-04-06; 2017-04-11 and 2017-04-20; 2017-04-26 and 2017-05-20; 2017-05-25 and 2017-05-31
+  My Van: There are many zero or near zero measurements between: 2017-04-12 and 2017-05-31
+  Tan Thieng: All zero measurements
+  Tich Thien: All zero measurements
+  Tien Thuy: All zero measurements
+
+4. solieuman Do bo sung_2018
+  Phuoc Long: zero for both Min and Max from 2018-01-01 to 2018-02-05: are they valid measurements?
+  Thien Thuy: only 2018-03-04 and 2018-03-05 have Min and Max, the rest are zero: are they valid measurements?
+  Tan Thieng: from 2018-02-01 to 2018-05-31, all measurements are zero; the rest are extremely small
+  Tich Thien: all are zero
+  Son Phu: non zero measurements only start from 2018-02-14 and end at 2019-05-22
+  Son Doc: non zero measurements only start from 2018-01-25
+  Cai Mit: non zero measurements only start from 2018-02-01
+  Cong Nang Am: non zero measurements only start from 2018-01-14 to 2018-01-22, the rest are zero
+  My Thanh: very small measurements on Max for 2018-01, the rest are zero
+  Loc Thua: all 2018-05 measurements are zero
+  Vung Liem: all data are zero
+  Hung Khanh Trung B: all data are zero
+
+5. Toa_do_vitridoman_BenTre
+  My Hoa, Son Doc, Thanh Thoi A: Are they on water/river?

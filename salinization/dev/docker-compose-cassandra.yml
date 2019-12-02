@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  datastore:
+    container_name: datastore
+    image: cassandra:latest
+    restart: always
+    ports:
+      - 7000:7000'
+      - 7001:7001'
+      - 7199:7199
+      - 9042:9042
+      - 9160:9160
+      - 9404:9404
+    networks:
+      - backend
+    volumes:
+      - ../datastore/config/cassandra/collectd.cassandra.conf:/etc/collectd/collectd.conf
+      - ../datastore/config/cassandra/prometheus.yml:/prometheus/prometheus.yml
+      - ../datastore/data/cassandra:/var/lib/cassandra
+    environment:
+      CASSANDRA_CLUSTER_NAME: salinization_cluster
+      CASSANDRA_DC: salinization_data_center
+
+networks:
+  backend:
+    driver: bridge

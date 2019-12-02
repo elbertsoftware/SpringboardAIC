@@ -1,0 +1,70 @@
+https://towardsdatascience.com/getting-started-with-apache-cassandra-and-python-81e00ccf17c9
+
+docker-compose up
+
+wait for a minute then run one of these to check for startup status:
+  docker container exec -it cas1 nodetool status
+  docker container exec -it cas2 nodetool status
+
+setup CityInfo keyspace and its tables:
+
+  CREATE TABLE cities (
+  id int,
+  name text,
+  country text,
+  PRIMARY KEY(id)
+  );
+
+  INSERT INTO cities(id,name,country) VALUES (1,'Karachi','Pakistan');
+  INSERT INTO cities(id,name,country) VALUES (2,'Lahore','Pakistan');
+  INSERT INTO cities(id,name,country) VALUES (3,'Dubai','UAE');
+  INSERT INTO cities(id,name,country) VALUES (4,'Berlin','Germany');
+
+  CREATE TABLE users (
+  username text,
+  name text,
+  age int,
+  PRIMARY KEY(username)
+  );
+
+  INSERT INTO users(username,name,age) VALUES ('aali24','Ali Amin',34);
+  INSERT INTO users(username,name,age) VALUES ('jack01','Jack David',23);
+  INSERT INTO users(username,name,age) VALUES ('ninopk','Nina Rehman',34);
+
+  CREATE TABLE users_by_cities (
+  username text,
+  name text,
+  city text,
+  age int,
+  PRIMARY KEY(city,age)
+  );
+
+  INSERT INTO users_by_cities(username,name,city,age) VALUES ('aali24','Ali Amin','Karachi',34);
+  INSERT INTO users_by_cities(username,name,city, age) VALUES ('jack01','Jack David','Berlin',23);
+  INSERT INTO users_by_cities(username,name,city, age) VALUES ('ninopk','Nina Rehman','Lahore',34);
+
+  BEGIN BATCH
+  INSERT into users(username,name,age) VALUES('raziz12','Rashid Aziz',34);
+  INSERT INTO users_by_cities(username,name,city, age) VALUES ('raziz12','Rashid Aziz','Karachi',30);
+  APPLY BATCH;
+
+start CQL shell:
+  docker container exec -it cas2 cqlsh
+
+interact in calsh:
+  desc keyspaces;
+  use "CityInfo";
+
+  select * from users;
+  
+  expand on;
+  select token(username),username,city from users_by_cities;
+
+  select * from users_by_cities where city = 'Karachi' and age = 34;
+  select * from users_by_cities where name = 'Ali Amin'; // failed as expected
+
+
+
+
+
+

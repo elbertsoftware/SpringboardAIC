@@ -1,0 +1,60 @@
+version: '3.3'
+
+services:
+  raw_datastore1:
+    container_name: raw_datastore1
+    image: cassandra:latest
+    restart: always
+    ports:
+      - 9042:9042
+    networks:
+      - backend
+    volumes:
+      - ../datastore/config/cassandra/raw_datastore1/collectd.cassandra.conf:/etc/collectd/collectd.conf
+      - ../datastore/config/cassandra/raw_datastore1/prometheus.yml:/prometheus/prometheus.yml
+      - ../datastore/data/cassandra/raw_datastore1:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=raw_cluster
+      - CASSANDRA_DC=raw_datacenter
+      - CASSANDRA_START_RPC=true
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+
+  raw_datastore2:
+    container_name: raw_datastore2
+    image: cassandra:latest
+    restart: always
+    ports:
+      - 9043:9042
+    networks:
+      - backend
+    volumes:
+      - ../datastore/config/cassandra/raw_datastore2/collectd.cassandra.conf:/etc/collectd/collectd.conf
+      - ../datastore/config/cassandra/raw_datastore2/prometheus.yml:/prometheus/prometheus.yml
+      - ../datastore/data/cassandra/raw_datastore2:/var/lib/cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=raw_cluster
+      - CASSANDRA_DC=raw_datacenter
+      - CASSANDRA_START_RPC=true
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_SEEDS=raw_datastore1
+    command: bash -c 'sleep 60;  /docker-entrypoint.sh cassandra -f'
+    depends_on:
+      - raw_datastore1
+
+  salinization_datastore:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - backend
+    volumes:
+      - ../datastore/data/postgres:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: ebs_dev
+      POSTGRES_PASSWORD: Ebs@5432
+      POSTGRES_DB: salinization_datastore
+
+networks:
+  backend:
+    driver: bridge
