@@ -35,3 +35,24 @@
 
 5. Toa_do_vitridoman_BenTre
   My Hoa, Son Doc, Thanh Thoi A: Are they on water/river?
+  Station without coordinates:
+    Vung Liem
+    Cai Mit
+    Thich Thien
+    Cong Nang Am
+    Tra Cu
+    My Van
+    Ben Chua
+    Lang The
+    Rach Rum
+    Cai Hop
+
+  Are they the same?
+    CAIMIT = C.CAIMIT
+
+6. Final dataset:
+  Training dataset: 13349 measurements
+  Test dataset: Can we have 2019 measurements?
+
+
+

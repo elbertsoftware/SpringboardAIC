@@ -4,11 +4,34 @@ New Python virtual environment:
     jupyter notebook: 6.0
 
     conda create --name salinization python=3.7
+    
+    conda config --set channel_priority strict
+
+    add the following settings into ~/.condarc
+        channel_priority: strict
+        channels:
+            - conda-forge
+            - defaults
+
+    conda install jupyter
 
 Packages:
-    pandas
     numpy
-    openpyxl vs. xlrd
+    pandas
+    seaborn
+
+    geographic support:
+        geopandas
+        descartes
+        earthpy
+
+    excel support:
+        openpyxl
+        xlrd
+
+    html support:
+        conda install lxml html5lib beautifulsoup4
+
     unidecode
     sqlalchemy
     psycopg2
@@ -16,22 +39,10 @@ Packages:
     boto3: conda install --channel conda-forge boto3
     cassandra-driver: conda install -c conda-forge cassandra-driver
     pytest
-    earthpy
-    geopandas: 
-        macOS:
-            conda config --set channel_priority strict
-
-            add the following settings into ~/.condarc
-                channel_priority: strict
-                channels:
-                    - conda-forge
-                    - defaults
-
-        conda install --channel conda-forge geopandas
-        conda install descartes
 
     scikit-learn
     statsmodels
+
     hdbscan: conda install -c conda-forge hdbscan
     hmmlearn: conda install --channel omnia hmmlearn
 
