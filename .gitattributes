@@ -2,3 +2,5 @@
 mini-projects/aic-5_4_3-JSON-mini-project/data/world_bank_projects.json filter=lfs diff=lfs merge=lfs -text
 **/*.gz filter=lfs diff=lfs merge=lfs -text
 **/*.sav filter=lfs diff=lfs merge=lfs -text
+**/*.pickle filter=lfs diff=lfs merge=lfs -text
+mini-projects/image-search-engine/saver/model_epoch_5.ckpt.data-00000-of-00001 filter=lfs diff=lfs merge=lfs -text
