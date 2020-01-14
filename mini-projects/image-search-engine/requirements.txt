@@ -1,4 +1,4 @@
-Flask==0.12.3
+Flask==1.0
 numpy==1.13.3
 # pickle==4.0.0  # installed for both Python 2 and Python 3 by default
 tqdm==4.23.4
