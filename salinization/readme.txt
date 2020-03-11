@@ -43,6 +43,10 @@ Packages:
     scikit-learn
     statsmodels
 
+    Pyramid ARIMA:
+        conda install -c alkaline-ml pmdarima (does not work)
+        pip install pmdarima
+
     hdbscan: conda install -c conda-forge hdbscan
     hmmlearn: conda install --channel omnia hmmlearn
 
