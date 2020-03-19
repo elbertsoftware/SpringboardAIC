@@ -40,6 +40,9 @@ Packages:
     cassandra-driver: conda install -c conda-forge cassandra-driver
     pytest
 
+    conda install -c conda-forge pypandoc
+    conda install -c conda-forge watermark
+
     scikit-learn
     statsmodels
 
@@ -77,3 +80,6 @@ Luigi:
     wrapper task (luigi.WrapperTask):
         no run() or output() methods
         just requires() method to define required another tasks
+
+How Production code structured:
+    https://github.com/FilippoBovo/production-data-science
