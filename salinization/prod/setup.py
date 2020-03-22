@@ -19,12 +19,16 @@ setup(
     classifiers=[
         'Programming Language :: Python :: 3',
     ],
-    install_requires=[
-      	'pypandoc>=1.4'
-    ],
     url='https://github.com/elbertsoftware/SpringboardAIC/tree/master/salinization',
     author='Elbert Software',
     author_email='kennethpham@elbertsoftware',
     license='MIT',
     packages=['salinization'],
+    install_requires=[
+      	'pypandoc>=1.4',
+        'pytest>=5.4.1',
+        'pytest-runner>=5.2',
+    ],
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest'],
 )

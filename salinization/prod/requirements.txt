@@ -84,6 +84,7 @@ pyproj==1.9.6
 pyrsistent==0.15.7
 PySocks==1.7.1
 pytest==5.4.1
+pytest-runner==5.2
 python-daemon==2.2.3
 python-dateutil==2.8.1
 pytz==2019.3
@@ -112,6 +113,7 @@ tornado==5.1.1
 traitlets==4.3.3
 Unidecode==1.1.1
 urllib3==1.25.8
+watermark==2.0.2
 wcwidth==0.1.8
 webencodings==0.5.1
 widgetsnbextension==3.5.1

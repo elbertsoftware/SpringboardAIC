@@ -39,6 +39,7 @@ Packages:
     boto3: conda install --channel conda-forge boto3
     cassandra-driver: conda install -c conda-forge cassandra-driver
     pytest
+    pytest-runner
 
     conda install -c conda-forge pypandoc
     conda install -c conda-forge watermark
@@ -83,3 +84,9 @@ Luigi:
 
 How Production code structured:
     https://github.com/FilippoBovo/production-data-science
+
+    Generate requirements.txt: 
+        pip freeze | grep -v salinization > requirements.txt
+
+    Run unit test:
+        python -m pytest
