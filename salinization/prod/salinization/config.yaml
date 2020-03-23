@@ -1,0 +1,11 @@
+appName: salinization
+logLevel: WARN
+
+stations:
+  top_count: 5
+
+train:
+  field: max
+  start: 2002-01-01
+  end: 2011-05-31
+

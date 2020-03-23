@@ -40,6 +40,7 @@ Packages:
     cassandra-driver: conda install -c conda-forge cassandra-driver
     pytest
     pytest-runner
+    conda install -c conda-forge confuse
 
     conda install -c conda-forge pypandoc
     conda install -c conda-forge watermark
@@ -88,5 +89,5 @@ How Production code structured:
     Generate requirements.txt: 
         pip freeze | grep -v salinization > requirements.txt
 
-    Run unit test:
-        python -m pytest
+    Run unit test (-s for showing print() to test console)
+        python -m pytest -s
