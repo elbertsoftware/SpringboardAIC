@@ -90,4 +90,4 @@ How Production code structured:
         pip freeze | grep -v salinization > requirements.txt
 
     Run unit test (-s for showing print() to test console)
-        python -m pytest -s
+        python -m pytest -s --disable-warnings --disable-pytest-warnings

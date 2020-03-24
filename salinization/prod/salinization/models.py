@@ -1,22 +1,20 @@
 import logging
-import confuse
 
 import numpy as np
 import pandas as pd
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-from salinization.data import load_stations, load_model, load_evaluation
+from salinization.config import get_config
+from salinization.data import load_stations, load_model, resample, load_evaluation
+from salinization.visualization import generate_forecast_chart
 
 
 models = {}
 
 
 def forecast(code: str, start_year: int, end_year: int):
-    config = confuse.Configuration('salinization', __name__)
-    
-    value_field = config['train']['field'].get()
-    train_end = pd.to_datetime(config['train']['end'].get())
+    train_end = pd.to_datetime(get_config()['train']['end'].get())
     
     if start_year <= train_end.year:
         raise ValueError(f'Start year must be greater than or equal to {train_end.year + 1}')
@@ -25,6 +23,8 @@ def forecast(code: str, start_year: int, end_year: int):
         raise ValueError(f'End year must be greater than or equal to start year {start_year}')
 
     # load model if it has not been loaded yet
+    global models
+
     if models.get(code) is None:
         models[code] = load_model(code)
 
@@ -33,9 +33,7 @@ def forecast(code: str, start_year: int, end_year: int):
     # load and prepare evaluation data into monthly samples
     eval_df = load_evaluation(code, start_year, end_year)  # eval_df is a data frame
 
-    eval_data = eval_df[value_field].resample('MS').max()  # eval_data is a time series
-    eval_data.dropna(inplace=True)
-
+    eval_data = resample(eval_df)  # eval_data is a time series
     eval_std = eval_data.std()
     
     period_in_months = 12 - train_end.month
@@ -52,10 +50,13 @@ def forecast(code: str, start_year: int, end_year: int):
     mse = mean_squared_error(eval_data, eval_forecast)
     rmse = np.sqrt(mse)
 
+    # plot
+    file = generate_forecast_chart(code, eval_data, forecast)
+
     return {
-        'forecast': forecast,
+        'data': forecast,
         'mae': mae,
         'mse': mse,
         'rmse': rmse,
-        'chart': None
+        'chart': file
     }

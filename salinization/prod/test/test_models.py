@@ -1,18 +1,19 @@
+from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from salinization import models
+from salinization.models import forecast
 
 
 def test_forecast():
-    result = models.forecast('BENTRAI', 2012, 2018)
+    result = forecast('BENTRAI', 2012, 2018)
 
     assert result is not None
     assert type(result) is dict
 
-    forecast = result.get('forecast')
-    assert forecast is not None
-    assert type(forecast) is pd.Series
+    data = result.get('data')
+    assert data is not None
+    assert type(data) is pd.Series
     
     mae = result.get('mae')
     assert mae is not None
@@ -25,4 +26,15 @@ def test_forecast():
     rmse = result.get('rmse')
     assert rmse is not None
     assert type(rmse) is np.float64    
+    
+    file = result.get('chart')
+    assert file is not None
+    assert type(file) is str
+
+    file_path = Path(file)
+    assert file_path.is_file()
+    assert file_path.suffix == '.png'
+    assert file_path.exists
+    assert file_path.stat().st_size > 10
+
 
