@@ -26,9 +26,14 @@ setup(
     packages=['salinization'],
     install_requires=[
       	'pypandoc>=1.4',
-        'pytest>=5.4.1',
+        'pytest>=5.4',
         'pytest-runner>=5.2',
+        'click>=7.1'
     ],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
+    entry_points='''
+        [console_scripts]
+        salinization_analysis=salinization.command_line:salinization_analysis
+    '''
 )
