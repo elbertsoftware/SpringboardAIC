@@ -1,6 +1,5 @@
 from pathlib import Path
 import numpy as np
-import pandas as pd
 
 from salinization.models import forecast
 
@@ -11,10 +10,14 @@ def test_forecast():
     assert result is not None
     assert type(result) is dict
 
+    index = result.get('index')
+    assert index is not None
+    assert type(index) is list
+    
     data = result.get('data')
     assert data is not None
-    assert type(data) is pd.Series
-    
+    assert type(data) is list
+
     mae = result.get('mae')
     assert mae is not None
     assert type(mae) is np.float64

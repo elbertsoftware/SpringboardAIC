@@ -65,6 +65,8 @@ Packages:
     dask: conda install dask
     dask-ml: conda install --channel conda-forge dask-ml
 
+    flask: conda install flask
+
 Luigi:
     run_luigi_tasks.py
         #!/bin/sh

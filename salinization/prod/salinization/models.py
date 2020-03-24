@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
@@ -52,9 +54,10 @@ def forecast(code: str, start_year: int, end_year: int):
     file = generate_forecast_chart(code, eval_data, forecast)
 
     return {
-        'data': forecast,
-        'mae': mae,
-        'mse': mse,
-        'rmse': rmse,
-        'chart': file
+        'data': [round(d, 2) for d in forecast.to_list()],
+        'index': [dt.strftime("%Y-%m-%d") for dt in forecast.index.to_list()],
+        'mae': round(mae, 2),
+        'mse': round(mse, 2),
+        'rmse': round(rmse, 2),
+        'chart': Path(file).name,
     }
