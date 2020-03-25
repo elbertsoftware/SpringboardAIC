@@ -10,6 +10,6 @@ train:
   end: 2011-05-31
 
 rest:
-  server: localhost
+  server: salinization-model
   port: 3000
   debug: False

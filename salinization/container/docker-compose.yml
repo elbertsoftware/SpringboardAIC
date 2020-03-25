@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  salinization-model:
+    build:
+      dockerfile: Dockerfile-model
+      context: .
+    image: salinization/model
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - salinization
+    volumes:
+      - ../prod/:/salinization
+      - ../config:/root/.config/salinization
+
+  salinization-ui:
+    build:
+      dockerfile: Dockerfile-ui
+      context: .
+    image: salinization/ui
+    restart: always
+    ports:
+      - 80:5000
+    networks:
+      - salinization
+    volumes:
+      - ../web/:/salinization
+      - ../config:/root/.config/salinization
+    depends_on:
+      - salinization-model
+
+networks:
+  salinization:
+    driver: bridge

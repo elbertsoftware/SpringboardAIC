@@ -38,4 +38,6 @@ def clean_up_charts():
 if __name__ == '__main__':
     port = config.get_config()['rest']['port'].get()
     debug = config.get_config()['rest']['debug'].get(True)
-    app.run(port=port, debug=debug)
+
+    # host 0.0.0.0 allows the app running on host machine ip
+    app.run(host='0.0.0.0', port=port, debug=debug)
