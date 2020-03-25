@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Salinity Analysis</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+    <center>
+    <h3>Forecast Result: {{ station }} Station</h3>
+    <p>Mean Absolute Error: {{ result.mae }}</p>
+    <p>Mean Squared Error: {{ result.mse }}</p>
+    <p>Root Mean Squared Error: {{ result.rmse }}</p>
+    <p>Accuracy Metric: {{ result.metric }}%</p>
+    <img src="{{ chart }}" />
+    <h4>Forecast Details:</h4>
+    <table border> 
+        <tr> 
+            <th>Month</th> 
+            <th>Predicted Value (g/L)</th>
+        </tr>
+    {%for i in range(0, len)%} 
+        <tr>
+            <td>{{ result.get('index')[i] }}</td>
+            <td>{{ result.get('data')[i] }}</td>
+        </tr> 
+    {%endfor%} 
+    </table>
+    </center> 
+    {% endblock %}
+  </body>
+</html>

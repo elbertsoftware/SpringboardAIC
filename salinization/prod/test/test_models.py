@@ -2,6 +2,7 @@ from pathlib import Path
 import numpy as np
 
 from salinization.models import forecast
+from salinization.visualization import IMAGE_TEMP_LOC
 
 
 def test_forecast():
@@ -29,12 +30,16 @@ def test_forecast():
     rmse = result.get('rmse')
     assert rmse is not None
     assert type(rmse) is np.float64    
+
+    metric = result.get('metric')
+    assert metric is not None
+    assert type(metric) is int
     
     file = result.get('chart')
     assert file is not None
     assert type(file) is str
 
-    file_path = Path(file)
+    file_path = Path(f'{IMAGE_TEMP_LOC}/{file}')
     assert file_path.is_file()
     assert file_path.suffix == '.png'
     assert file_path.exists

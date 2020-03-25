@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "40e15305-5533-4268-accc-9f9437a5e3e1",
+		"name": "Salinization Analysis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get stations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/station",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"station"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forecast",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/forecast/BENTRAI/2012/2022",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"forecast",
+						"BENTRAI",
+						"2012",
+						"2022"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "chart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/chart/20200324224039-BENTRAI.png",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"chart",
+						"20200324224039-BENTRAI.png"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cleanup chart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/admin/chart/clean",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"chart",
+						"clean"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Salinity Analysis</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <h3>Salinity Analysis</h3>
+
+    <form action="/forecast" method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.station.label }}
+            {{ form.station(size=1) }}
+        </p>
+        <p>
+            {{ form.start.label }}
+            {{ form.start(size=4) }}
+        </p>
+        <p>
+            {{ form.end.label }}
+            {{ form.end(size=4) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    
+    {% endblock %}
+  </body>
+</html>

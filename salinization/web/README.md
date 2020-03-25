@@ -1,3 +1,3 @@
 How to run:
-    cd salinization/prod
+    cd salinization/web
     python app.py

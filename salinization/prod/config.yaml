@@ -8,3 +8,8 @@ train:
   field: max
   start: 2002-01-01
   end: 2011-05-31
+
+rest:
+  server: localhost
+  port: 3000
+  debug: False

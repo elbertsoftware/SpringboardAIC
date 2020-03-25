@@ -23,11 +23,16 @@ def generate_forecast_chart(code, eval, forecast):
 
     file = f'{IMAGE_TEMP_LOC}/{datetime.utcnow().strftime("%Y%m%d%H%M%S")}-{code}.png'
     plt.savefig(file)
-
+    
     return file
 
 
 def clean_up_charts():
     image_temp_path = Path(IMAGE_TEMP_LOC)
+
+    count = 0
     for file in image_temp_path.glob('*'):
         file.unlink()
+        count += 1
+
+    return count

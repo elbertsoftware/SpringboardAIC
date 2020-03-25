@@ -66,6 +66,8 @@ Packages:
     dask-ml: conda install --channel conda-forge dask-ml
 
     flask: conda install flask
+    flask-wtf: conda install flask-wtf
+    requests:
 
 Luigi:
     run_luigi_tasks.py
