@@ -33,7 +33,7 @@ def forecast(code: str, start_year: int, end_year: int):
     # load and prepare evaluation data into monthly samples
     eval_df = load_evaluation(code, start_year, end_year)  # eval_df is a data frame
 
-    eval_data = resample(eval_df)  # eval_data is a time series
+    eval_data = resample(eval_df, aggregated_by='mean')  # eval_data is a time series
     eval_std = eval_data.std()
     
     period_in_months = 12 - train_end.month

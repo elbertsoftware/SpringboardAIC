@@ -33,10 +33,13 @@ def load_model(code):
         return pickle.load(pkl)
 
 
-def resample(df):
+def resample(df, aggregated_by='max'):
     value_field = get_config()['train']['field'].get()
 
-    data = df[value_field].resample('MS').max()  # resampled data is a time series
+    if aggregated_by.lower() == 'max':
+        data = df[value_field].resample('MS').max()  # resampled data is a time series
+    else:
+        data = df[value_field].resample('MS').mean()  # resampled data is a time series
     data.dropna(inplace=True)
 
     return data
