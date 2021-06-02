@@ -106,7 +106,7 @@ toolz==0.10.0
 tornado==5.1.1
 traitlets==4.3.3
 Unidecode==1.1.1
-urllib3==1.25.8
+urllib3==1.26.5
 watermark==2.0.2
 wcwidth==0.1.8
 webencodings==0.5.1
